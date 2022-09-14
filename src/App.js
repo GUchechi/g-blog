@@ -11,20 +11,20 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="App">
-    <Header title="G-Blog"/>
-    <Nav />
-      <Router>
-      <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/post' element={<NewPost />} />
-        <Route path='/post:id' element={<PostPage />} />
-        <Route path='/about' element={<About />} />
-        <Route path='*' element={<MissingPage />} />
-      </Routes>
+    <Router>
+      <div className="App">
+        <Header title="G-Blog"/>
+        <Nav />
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/post' element={<NewPost />} />
+          <Route path='/post:id' element={<PostPage />} />
+          <Route path='/about' element={<About />} />
+          <Route path='*' element={<MissingPage />} />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
-    <Footer />
-    </div>
   );
 }
 
