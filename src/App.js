@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, useHistory} from 'react-router-dom'
 import Home from './components/Home';
 import NewPost from './components/NewPost';
 import PostPage from './components/PostPage';
