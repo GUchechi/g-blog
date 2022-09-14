@@ -11,7 +11,7 @@ import Footer from './components/Footer';
 import { useState } from 'react';
 
 function App() {
-  const [post, setPost] = useState([
+  const [posts, setPosts] = useState([
     {
       id: 1,
       title: "My First Post",
@@ -43,9 +43,9 @@ function App() {
     <Router>
       <div className="App">
         <Header title="G-Blog"/>
-        <Nav />
+        <Nav search={search} setSearch={setSearch} />
         <Routes>
-          <Route path='/' element={<Home/>}/>
+          <Route path='/' element={<Home posts={posts}/>}/>
           <Route path='/post' element={<NewPost />} />
           <Route path='/post:id' element={<PostPage />} />
           <Route path='/about' element={<About />} />
