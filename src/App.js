@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Routes, useHistory} from 'react-router-dom'
+import { Route, Routes, useNavigate} from 'react-router-dom'
 import Home from './components/Home';
 import NewPost from './components/NewPost';
 import PostPage from './components/PostPage';
@@ -39,14 +39,17 @@ function App() {
   ]);
   const [search, setSearch] = useState("")
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
-  const handleDelete = () => {
-    
+  const handleDelete = (id) => {
+    const postsList = posts.filter(post => post.id !== id);
+    setPosts(postsList);
+    navigate.push('/');
   }
 
 
   return (
-    <Router>
+    <>
       <div className="App">
         <Header title="G-Blog"/>
         <Nav search={search} setSearch={setSearch} />
@@ -59,7 +62,7 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </Router>
+    </>
   );
 }
 
