@@ -14,6 +14,7 @@ import api from './api/posts'
 import EditPost from './components/EditPost';
 import useWindowSize from './hooks/useWindowSize';
 import useAxiosFetch from './hooks/useAxiosFetch';
+import { DataProvider} from './context/DataContext'
 
 
 function App() {
@@ -110,17 +111,19 @@ function App() {
   return (
     <>
       <div className="App">
-        <Header title="G-Blog" width={width}/>
-        <Nav search={search} setSearch={setSearch} />
-        <Routes>
-          <Route path='/' element={<Home posts={searchResults} fetchError={fetchError} isLoading={isLoading}/>}/>
-          <Route path='/post' element={<NewPost postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} handleSubmit={handleSubmit} />} />
-          <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />}/>
-          <Route path="/edit/:id" element={ <EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody}/>} />
-          <Route path='/about' element={<About />} />
-          <Route path='*' element={<MissingPage />} />
-        </Routes>
-        <Footer />
+        <DataProvider>
+            <Header title="G-Blog" width={width}/>
+            <Nav search={search} setSearch={setSearch} />
+            <Routes>
+              <Route path='/' element={<Home posts={searchResults} fetchError={fetchError} isLoading={isLoading}/>}/>
+              <Route path='/post' element={<NewPost postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} handleSubmit={handleSubmit} />} />
+              <Route path='/post/:id' element={<PostPage posts={posts} handleDelete={handleDelete} />}/>
+              <Route path="/edit/:id" element={ <EditPost posts={posts} handleEdit={handleEdit} editTitle={editTitle} setEditTitle={setEditTitle} editBody={editBody} setEditBody={setEditBody}/>} />
+              <Route path='/about' element={<About />} />
+              <Route path='*' element={<MissingPage />} />
+            </Routes>
+            <Footer />
+        </DataProvider>
       </div>
     </>
   );
