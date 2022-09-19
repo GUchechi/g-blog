@@ -9,7 +9,7 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import EditPost from './components/EditPost';
 import { DataProvider} from './context/DataContext'
-import { Route, Routes, useNavigate} from 'react-router-dom'
+import { Route, Routes} from 'react-router-dom'
 
 
 function App() {
